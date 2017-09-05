@@ -19,8 +19,16 @@ const list = (function createList() {
         return all.filter(item => item.id === parseInt(id))
       }
 
-    }
-  })()
+      static find_by_title(title){
+        return all.filter(item => item.title === title)
+      }
+      static delete_by_id(id){
+        all = all.filter(item => item.id !== id)
+
+      }
+  }
+})()
+
 
 function populateLists() {
   let options = ""
@@ -35,3 +43,4 @@ function populateLists() {
   document.getElementById("all_tasks").innerHTML = options
   document.getElementById("all_lists").innerHTML = list_instances
 }
+
