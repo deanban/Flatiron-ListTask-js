@@ -22,5 +22,9 @@ const task = (function createTask() {
       return all.filter(item => item.listId === parseInt(listId))
     }
 
+    static all() {
+      return all
+    }
+
   }
 })()
