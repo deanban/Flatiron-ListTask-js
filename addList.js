@@ -19,8 +19,15 @@ const list = (function createList() {
         return all.filter(item => item.id === parseInt(id))
       }
 
-    }
-  })()
+      static find_by_title(title){
+        return all.filter(item => item.title === title)
+      }
+      static delete_by_id(id){
+        all = all.filter(item => item.id !== id)
+
+      }
+  }
+})()
 
 function populateLists() {
   let options = ""
@@ -29,9 +36,9 @@ function populateLists() {
   for (let i = 0; i < lists.length; i++) {
     let list = lists[i]
     options += `<option id="list_${list.id}" value="${list.id}">${list.title}</option>`
-    list_instances += `<div id="${list.id}"><h2>${list.title}</h2></div>`
+    list_instances = `<ul id="${list.id}"><h2><button id=list_${list.id}>X</button> ${list.title}</h2></ul>`
   }
 
   document.getElementById("all_tasks").innerHTML = options
-  document.getElementById("all_lists").innerHTML = list_instances
+  document.getElementById("all_lists").innerHTML += list_instances
 }
