@@ -14,5 +14,12 @@ const list = (function createList() {
       static find(id) {
         return all.filter(item => item.id === parseInt(id))
       }
-    }
-  })()
+      static find_by_title(title){
+        return all.filter(item => item.title === title)
+      }
+      static delete_by_id(id){
+        all = all.filter(item => item.id !== id)
+
+      }
+  }
+})()
