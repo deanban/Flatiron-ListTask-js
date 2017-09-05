@@ -1,6 +1,4 @@
-const task = (function createTask() {
-
-  let all = []
+const task = (function createTask(){
   let IdCounter = 0
 
   return class Task {
@@ -9,7 +7,6 @@ const task = (function createTask() {
       this.description = description
       this.priority = priority
       this.id = ++IdCounter
-      all.push(this)
       let currentList = list.find(this.listId)[0]
       currentList.tasks.push(this)
     }
@@ -18,13 +15,9 @@ const task = (function createTask() {
       return all.filter(item => item.id === parseInt(id))
     }
 
-    static findByList(listId) {
-      return all.filter(item => item.listId === parseInt(listId))
+    deleteTask(listId, id) {
+      let parentList = list.find(listId)
+      parentList[0].tasks = parentList[0].tasks.filter(task => this.id !== id)
     }
-
-    static all() {
-      return all
-    }
-
   }
 })()

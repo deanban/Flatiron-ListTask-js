@@ -4,7 +4,7 @@ function handleFormSubmit(formInput) {
 }
 
 function updateList(listId, description, priority) {
-  new task(parseInt(listId), description.value, priority.value)
-
-  
+  let thisTask = new task(parseInt(listId), description.value, priority.value)
+  let singleList = document.getElementById(`${listId}`)
+  singleList.innerHTML += `<li class=${thisTask.id}><button name=${thisTask.id}>X</button> ${description.value}, ${priority.value}</li>`
 }
